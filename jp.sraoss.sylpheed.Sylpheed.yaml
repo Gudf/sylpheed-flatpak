@@ -1,0 +1,29 @@
+id: jp.sraoss.sylpheed.Sylpheed
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: sylpheed
+rename-icon: sylpheed
+rename-desktop-file: sylpheed.desktop
+
+finish-args:
+  - --device=all
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=gpg-agent
+  - --filesystem=host:rw
+
+modules:
+  - shared-modules/gtk2/gtk2.json
+
+  - name: sylpheed
+    buildsystem: autotools
+    build_commands:
+      - install -Dm644 sylpheed.png /app/share/icons/hicolor/48x48/apps/sylpheed.png
+    sources:
+      - type: git
+        url: https://github.com/sylpheed-mail/sylpheed
+        commit: c47d366a3c2340464b1851f99d6a04ce3a6c17fd
+      - type: patch
+        path: aclocal-automake-versions.patch

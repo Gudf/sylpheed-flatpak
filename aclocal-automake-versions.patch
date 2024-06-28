@@ -1,0 +1,14 @@
+diff --git a/autogen.sh b/autogen.sh
+index f5bf3e80..19ac6904 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+-ACLOCAL=aclocal-1.15
+-AUTOMAKE=automake-1.15
++ACLOCAL=aclocal
++AUTOMAKE=automake
+ 
+ $ACLOCAL -I ac \
+   && libtoolize --force --copy \
